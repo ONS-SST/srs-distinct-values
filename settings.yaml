@@ -1,5 +1,5 @@
-full-input-file-path: 
+full-input-file-path: D:\projects\dummy\data\Primary_Pupils_Dummy_Dataset.csv
 
-full-output-directory:
+full-output-directory: D:\projects\srs-distinct-values
 
 max-row-limit: 1048576

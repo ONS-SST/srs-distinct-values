@@ -2,7 +2,7 @@ import os
 import yaml
 
 
-class SettingsError(Exception)
+class SettingsError(Exception):
 	pass
 	
 

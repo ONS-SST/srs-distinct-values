@@ -21,7 +21,7 @@ def compute_distinct_values(filepath: str, output_directory: str, max_rows_per_f
 		n_partitions, single_file, file_suffix = write_to_single_file_check(number_of_rows_to_write, max_rows_per_file)
 		
 		if column_value_counts.npartitions != n_partitions:
-			column_value_counts.repartition(npartitions=n_partitions)
+			column_value_counts = column_value_counts.repartition(npartitions=n_partitions)
 		
 		column_value_counts.to_csv(
 			filename=os.path.join(output_directory, column + file_suffix),
@@ -38,11 +38,11 @@ def write_to_single_file_check(given_rows: int, limit: int) -> (int, bool, str):
 		n_partitions, remainder = divmod(given_rows, limit)
 		n_partitions += bool(remainder)
 		single_file = False
-		file_suffix = '-*.csv'
+		file_suffix = '-part-*.csv'
 	
 	else:
 		n_partitions = 1
 		single_file = True
 		file_suffix = '.csv'
-	
+		
 	return n_partitions, single_file, file_suffix

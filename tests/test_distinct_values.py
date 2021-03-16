@@ -10,14 +10,12 @@ from distinct_values.distinct_values import compute_distinct_values
 @pytest.fixture
 def input_csv():
 	import os
-	import dask.dataframe as dd
 	
 	csv = pd.DataFrame({
 		'id': ['1', '2', '3', '4', '5'],
 		'name': ['Steven', 'John', 'Steven', 'Cathy', 'Sonia'],
 		'age': ['22', '23', '22', '22', '22']
 	})
-	csv = dd.from_pandas(csv, npartitions=1)
 	
 	yield csv
 	
@@ -45,7 +43,7 @@ def expected_data():
 
 
 def test_compute_distinct_values_within_max_row_limit(input_csv, expected_data):
-	with patch('dask.dataframe.read_csv', MagicMock(side_effect=[input_csv])):
+	with patch('pandas.read_csv', MagicMock(side_effect=[input_csv])):
 		compute_distinct_values(
 			filepath='./tests/test_data.csv',
 			output_directory='./tests/',
@@ -58,7 +56,7 @@ def test_compute_distinct_values_within_max_row_limit(input_csv, expected_data):
 		
 
 def test_compute_distinct_values_outside_max_row_limit(input_csv, expected_data):
-	with patch('dask.dataframe.read_csv', MagicMock(side_effect=[input_csv])):
+	with patch('pandas.read_csv', MagicMock(side_effect=[input_csv])):
 		compute_distinct_values(
 			filepath='./tests/test_data.csv',
 			output_directory='./tests/',

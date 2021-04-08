@@ -2,7 +2,7 @@
 
 This tool will compute and write out all distinct values in all columns in any given CSV file.
 
-# Install
+# Installation
 
 ## Using venv with requirements.txt
 
@@ -31,7 +31,7 @@ The tool is ready to use once all the requirements are successfully installed.
 **Note:**
 If you're installing libraries from artifactory you must set-up your credentials first to point pip to artifactory instead of pypi. 
 
-# Instructions
+# Usage
 
 ## `settings.yaml`
 

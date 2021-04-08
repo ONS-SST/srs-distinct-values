@@ -1,3 +1,5 @@
 poetry.lock
 __pycache__
 *.csv
+.vscode
+dvt-env
